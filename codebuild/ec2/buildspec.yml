@@ -7,6 +7,7 @@ phases:
   build:
     commands:
       # Build your application
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 372788022554.dkr.ecr.us-west-2.amazonaws.com
       - cp -rf ./codebuild/.env.prod ./src/.env
       - cp -rf ./codebuild/ec2/scripts scripts
       - cp -rf ./codedeploy/appspec.yml appspec.yml
