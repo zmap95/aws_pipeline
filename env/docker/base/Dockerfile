@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git zip unzip && \
     rm -rf composer-setup.php
 
 # add mysql driver
-RUN docker-php-ext-install pdo_mysql
+#RUN docker-php-ext-install pdo_mysql
 
 WORKDIR /app
 ADD ./src/composer.lock /app/composer.lock
