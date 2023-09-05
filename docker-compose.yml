@@ -1,0 +1,28 @@
+version: '3'
+services:
+    base:
+      build:
+        context: .
+        dockerfile: ./env/docker/base/Dockerfile
+      command: "sleep 0"
+    nginx:
+        build:
+          context: .
+          dockerfile: ./env/docker/nginx/Dockerfile
+        restart: always
+        ports:
+        - "80:80"
+        volumes:
+          - ./src:/app:delegated
+          - ./env/docker/nginx/conf.d:/etc/nginx/conf.d
+        links:
+          - php
+    php:
+        build:
+          context: .
+          dockerfile: ./env/docker/php-fpm/Dockerfile
+          args:
+            IMAGE_DEMO_CMS_BASE: ${IMAGE_DEMO_CMS_BASE}
+        restart: always
+        volumes:
+          - ./src:/app:delegated

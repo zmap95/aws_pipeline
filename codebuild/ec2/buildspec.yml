@@ -7,9 +7,9 @@ phases:
   build:
     commands:
       # Build your application
-      - cp -rf $CODEBUILD_SRC_DIR_SourceArtifactInfa/codebuild/.env.prod .env
-      - cp -rf $CODEBUILD_SRC_DIR_SourceArtifactInfa/codebuild/EC2/scripts scripts
-      - cp -rf $CODEBUILD_SRC_DIR_SourceArtifactInfa/codedeploy/appspec.yml appspec.yml
+      - cp -rf ./codebuild/.env.prod ./src/.env
+      - cp -rf ./codebuild/ec2/scripts scripts
+      - cp -rf ./codedeploy/appspec.yml appspec.yml
       - ls -al
   post_build:
     commands:
