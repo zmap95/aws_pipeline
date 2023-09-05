@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM public.ecr.aws/bitnami/php-fpm:8.1
 RUN apt-get update && apt-get install -y git zip unzip && \
     curl -sS https://getcomposer.org/installer -o composer-setup.php && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
